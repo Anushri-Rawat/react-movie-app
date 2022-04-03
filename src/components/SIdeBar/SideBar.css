@@ -1,0 +1,60 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 20%;
+  background-color: #131c25;
+  position: relative;
+  overflow-y: scroll;
+}
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+.sidebar-logo {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+  color: white;
+}
+.sidebar-browse,
+.sidebar-categories {
+  margin-top: 4rem;
+}
+.sidebar-title {
+  font-family: Avenir LT Std\65 Medium, Avenir, Arial, sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-left: 2rem;
+  color: #656f7f;
+  letter-spacing: 2px;
+  padding-bottom: 0.5rem;
+}
+.nav-bar {
+  margin-left: 2rem;
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+.nav-bar li {
+  list-style-type: none;
+  text-decoration: none;
+  color: #848b9e;
+  padding: 0.5rem 0;
+  position: relative;
+  cursor: pointer;
+}
+.nav-bar li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -30px;
+  height: 100%;
+  background: #0fd5ff;
+  width: 0.2rem;
+  border-radius: 15px;
+  transform: scaleY(0);
+  transition: transform 0.5s;
+}
+.nav-bar li:hover:before {
+  transform: scaleY(1);
+}

@@ -1,0 +1,143 @@
+.detailsPage {
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  padding: 2rem 4rem;
+  flex: 1;
+  background-color: #0d181f;
+  position: relative;
+  color: white;
+  overflow-y: scroll;
+}
+.close-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #777;
+  color: white;
+  position: absolute;
+  top: 1rem;
+  right: 4.1rem;
+}
+.detailsPage > h1 {
+  font-size: 2.8rem;
+  letter-spacing: 0.75px;
+  margin-top: 3rem;
+  text-transform: capitalize;
+}
+.movie-description {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.rating-and-type {
+  display: flex;
+  gap: 8rem;
+}
+.movie-detail-type {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.movie-rating {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.movie-rating-stars {
+  display: flex;
+}
+.movie-rating-stars svg {
+  height: 1.7rem;
+  width: 2.2rem;
+}
+p {
+  width: 70%;
+  margin: 1.5rem 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #fff;
+  word-spacing: 4px;
+}
+.movies-btn {
+  margin: 2rem 0;
+  display: flex;
+}
+.movie-trailer-link {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff !important;
+  background-color: #00b5db;
+  text-decoration: none;
+}
+.movie-trailer-link img {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 1rem;
+}
+.movie-trailer-link,
+.favourite-btn {
+  padding: 1rem 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border-radius: 0.75rem;
+}
+.favourite-btn {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #eb2f06;
+  background: transparent;
+  font-weight: 700;
+  margin-left: 4rem;
+  border: 0.2rem solid #eb2f06;
+}
+.favourite-btn:hover {
+  cursor: pointer;
+  color: #fff !important;
+  background-color: #eb2f06 !important;
+}
+.cast-details-container {
+  margin: 1.2rem 0;
+}
+.cast-details-container > h3 {
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+.cast-actor-details {
+  margin-top: 1rem;
+  display: flex;
+  gap: 2rem;
+  height: 200px;
+}
+.cast-detail {
+  width: calc(16.67% - 1.66rem);
+}
+.cast-detail img {
+  width: 100%;
+}
+.cast-detail figcaption {
+  font-size: 1rem;
+  line-height: 1.3;
+  text-transform: capitalize;
+  color: #d9d9d9;
+  margin-top: 10px;
+}
+.movie-directed-by {
+  margin-top: 4rem;
+  text-transform: uppercase;
+}
+.director-name {
+  margin: 0.8rem 0;
+  font-size: 16px;
+}
+.error-msg {
+  color: white;
+  margin: 20px auto;
+}

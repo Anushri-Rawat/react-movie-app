@@ -1,0 +1,101 @@
+.Homepage {
+  position: relative;
+  padding: 2rem 4rem;
+  flex: 1;
+  overflow-y: scroll;
+}
+.Homepage::-webkit-scrollbar {
+  width: 15px;
+}
+.Homepage::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.Homepage::-webkit-scrollbar-thumb {
+  background: #d6dee1;
+  background-clip: content-box;
+  border-radius: 20px;
+  border: 6px solid transparent;
+}
+.Homepage-heading {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  color: white;
+  margin-top: 2.5rem;
+}
+.movies-list {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.movies-item {
+  padding: 1.5rem 0;
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
+  width: calc(25% - 1.5rem);
+}
+.movies-item:hover {
+  background: #131c25;
+  cursor: pointer;
+  box-shadow: 0 0 2rem #1c3443;
+}
+.movies-link:active,
+.movies-link:hover,
+.movies-link:link,
+.movies-link:visited {
+  text-decoration: none;
+  color: #848b9e;
+}
+.movies-link > img {
+  width: 90%;
+  height: 75%;
+  margin-bottom: 1rem;
+}
+.movie-name {
+  font-size: 1rem;
+  color: #d9d9d9;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.movie-genre {
+  font-size: 10px;
+  color: white;
+  visibility: none;
+  opacity: 0;
+}
+.release-year {
+  font-size: 12px;
+  display: block;
+  margin: 0.5rem auto 0;
+  width: 50%;
+  padding: 0.5rem;
+  background-color: #5f27cd;
+  border-radius: 2rem;
+  visibility: none;
+  opacity: 0;
+}
+.movies-item:hover .release-year,
+.movies-item:hover .movie-genre {
+  visibility: visible;
+  opacity: 1;
+}
+.nextBtn {
+  cursor: pointer;
+  border: none;
+  background: rgba(15, 213, 255, 0.9);
+  border-radius: 2px;
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 140%;
+  right: 3%;
+  transform: translateY(-43%);
+}
+.button-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
