@@ -3,6 +3,9 @@
   justify-content: space-between;
   align-items: center;
 }
+.mobile-header {
+  display: none;
+}
 .search-bar {
   display: flex;
   align-items: center;
@@ -12,15 +15,15 @@
 }
 .search-input-box {
   border: none;
-  width: 1.8rem;
-  height: 1.8rem;
-  padding: 1rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 1.2rem;
   border-radius: 3rem;
   cursor: pointer;
   background: #00acd1;
   color: #fff;
   transition: width 0.5s ease-in-out;
-  margin-right: -1.5rem;
+  margin-right: -1.7rem;
 }
 .search-input-box::placeholder {
   color: white;
@@ -29,8 +32,8 @@
   outline: none;
 }
 .search-btn {
-  width: 1rem;
-  height: 1rem;
+  width: 1.1rem;
+  height: 1.1rem;
   cursor: pointer;
 }
 .app_user {
@@ -38,15 +41,88 @@
   align-items: center;
 }
 .user-image {
-  height: 2.5rem;
+  height: 2.7rem;
   border-radius: 50%;
   margin-right: 1rem;
 }
 .username {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: white;
 }
 .opensearchbar {
   width: 20rem;
   cursor: text;
+}
+.favourites-div {
+  margin-left: auto;
+  margin-right: 1.5rem;
+  position: relative;
+}
+.sidemenu-btn {
+  display: none;
+}
+@media (max-width: 1440px) {
+  .search-input-box {
+    border: none;
+    width: 1.8rem;
+    height: 1.8rem;
+    padding: 1rem;
+    margin-right: -1.5rem;
+  }
+  .search-btn {
+    width: 1rem;
+    height: 1rem;
+  }
+  .user-image {
+    height: 2.4rem;
+  }
+  .username {
+    font-size: 0.9rem;
+  }
+  .opensearchbar {
+    width: 20rem;
+    cursor: text;
+  }
+}
+@media (max-width: 650px) {
+  .header {
+    flex-direction: column;
+  }
+  .app_user {
+    display: none;
+  }
+  .mobile-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .homePage-logo {
+    display: flex !important;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+  .homePage-logo h2 {
+    font-family: "Merienda", cursive !important;
+    font-size: 1.5rem;
+  }
+  .mobile-header-right-section {
+    display: flex;
+  }
+  .mobile-header-right-section .favourites-div {
+    display: block;
+  }
+  .search-bar {
+    margin-top: 0.2rem;
+  }
+  .opensearchbar {
+    width: 20rem;
+  }
+  .favourites-div {
+    display: none;
+    margin-right: 10px;
+  }
+  .sidemenu-btn {
+    display: block;
+  }
 }

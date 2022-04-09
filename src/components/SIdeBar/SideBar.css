@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Raleway:wght@100;300;500&display=swap");
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -10,18 +11,21 @@
   display: none;
 }
 .sidebar-logo {
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   margin-left: 2rem;
   color: white;
 }
+.sidebar-logo h2 {
+  font-family: "Merienda", cursive !important;
+  font-size: 2rem;
+}
 .sidebar-browse,
 .sidebar-categories {
-  margin-top: 4rem;
+  margin-top: 3.5rem;
 }
 .sidebar-title {
-  font-family: Avenir LT Std\65 Medium, Avenir, Arial, sans-serif;
   font-size: 1.2rem;
   text-transform: uppercase;
   margin-left: 2rem;
@@ -57,4 +61,63 @@
 }
 .nav-bar li:hover:before {
   transform: scaleY(1);
+}
+.nav-bar li:hover {
+  color: #0fd5ff;
+}
+@media (max-width: 1440px) {
+  .sidebar-logo {
+    margin-top: 2rem;
+  }
+  .sidebar-browse,
+  .sidebar-categories {
+    margin-top: 2.5rem;
+  }
+  .sidebar-title {
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem;
+  }
+  .nav-bar {
+    font-size: 0.9rem;
+  }
+  .nav-bar li {
+    color: #848b9e;
+    padding: 0.4rem 0;
+  }
+}
+@media (max-width: 1080px) {
+  .sidebar {
+    min-width: 200px;
+  }
+}
+@media (max-width: 650px) {
+  .sidebar {
+    display: none;
+  }
+  .sideMenu {
+    display: block;
+    position: absolute;
+    top: 4.2rem;
+    right: 2rem;
+    width: 60%;
+    height: 70vh;
+    overflow-y: scroll;
+    z-index: 500;
+  }
+  .sideMenu::-webkit-scrollbar {
+    display: block;
+    width: 15px;
+  }
+  .sideMenu::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  .sideMenu::-webkit-scrollbar-thumb {
+    background: #d6dee1;
+    background-clip: content-box;
+    border-radius: 20px;
+    border: 6px solid transparent;
+  }
+  .sidebar-logo {
+    display: none;
+  }
 }

@@ -3,15 +3,17 @@ import Context from "../../store/Context";
 import playBtn from "../../Assests/play.svg";
 import Header from "../Basic Ui Components/Header";
 import "./DetailsPage.css";
-import { AiFillStar, AiFillHeart } from "react-icons/ai";
+import Loading from "../Basic Ui Components/Loading";
+import { AiFillStar, AiFillHeart, AiOutlineArrowLeft } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const DetailsPage = () => {
   const ctx = useContext(Context);
-  console.log(ctx.detailsPage);
 
-  function closeHandler(e) {
-    e.preventDefault();
-    ctx.setDetailsPage([]);
+  let watchedDisabled;
+  if (ctx.detailsPage.length > 0) {
+    let storedMovie = ctx.favourites.find((o) => o.id == ctx.detailsPage[0].id);
+    watchedDisabled = storedMovie ? true : false;
   }
 
   const renderStars = (rating) => {
@@ -47,7 +49,7 @@ const DetailsPage = () => {
     return markup;
   };
 
-  if (!ctx.detailsPage[0].status_code) {
+  if (ctx.detailsPage.length > 0 && !ctx.detailsPage[0].status_code) {
     return (
       <div
         className="detailsPage"
@@ -55,31 +57,36 @@ const DetailsPage = () => {
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.75)),url("https://image.tmdb.org/t/p/original/${ctx.detailsPage[0].poster_path}")`,
         }}
       >
-        <button className="close-btn" onClick={closeHandler}>
-          X
-        </button>
+        {/* <button className="close-btn" onClick={closeHandler}>
+          <AiOutlineArrowLeft style={{ fontSize: "1.2rem" }} />
+        </button> */}
         <Header />
         <h1>{ctx.detailsPage[0].title}</h1>
         <div className="movie-description">
           <div className="rating-and-type">
             <div className="movie-rating">
               <div className="movie-rating-stars">
-                {renderStars(Math.round(3))}
+                {renderStars(Math.round(ctx.detailsPage[0].vote_average / 2))}
               </div>
-              <div className="movie-rating-number">3/5</div>
+              <div className="movie-rating-number">
+                {ctx.detailsPage[0].vote_average / 2}
+                /5
+              </div>
             </div>
             <div className="movie-detail-type">
               <div>{ctx.detailsPage[0].genres[0].name}</div>
+              <span className="dot">.</span>
               <div className="movie-length">
                 {Math.round(ctx.detailsPage[0].runtime / 60)}hrs{" "}
                 {ctx.detailsPage[0].runtime % 60}mins
               </div>
+              <span className="dot">.</span>
               <div className="movie-release-year">
                 {ctx.detailsPage[0].release_date.slice(0, 4)}
               </div>
             </div>
           </div>
-          <p>{ctx.detailsPage[0].overview}</p>
+          <p className="movie-overview">{ctx.detailsPage[0].overview}</p>
           <div className="movies-btn">
             <a
               href={ctx.detailsPage[0].homepage}
@@ -87,7 +94,13 @@ const DetailsPage = () => {
             >
               <img src={playBtn} alt="Play icon"></img> Watch Trailer
             </a>
-            <button className="favourite-btn">
+            <button
+              className="favourite-btn"
+              disabled={watchedDisabled}
+              onClick={() => {
+                ctx.addMoviesToFavourites(ctx.detailsPage[0]);
+              }}
+            >
               <AiFillHeart style={{ fill: "#eb2f06" }} />
               Add to Favorites
             </button>
@@ -109,8 +122,14 @@ const DetailsPage = () => {
         </div>
       </div>
     );
+  } else if (ctx.detailsPage.length == 0) {
+    return <Loading></Loading>;
   } else {
-    return <h2 className="error-msg">{ctx.detailsPage[0].status_message}</h2>;
+    return (
+      <div className="error-window">
+        <h2 className="error-msg">{ctx.detailsPage[0].status_message}</h2>
+      </div>
+    );
   }
 };
 export default DetailsPage;

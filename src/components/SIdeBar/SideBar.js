@@ -1,28 +1,47 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Context from "../../store/Context";
 import "./SideBar.css";
 import Loading from "../Basic Ui Components/Loading";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const ctx = useContext(Context);
+
+  useEffect(() => {
+    movieListByCategories();
+  }, [ctx.pages]);
+
   async function movieListByCategories(e) {
     ctx.setDetailsPage([]);
-    const movie_type = e.target.textContent.replace(/ /g, "_").toLowerCase();
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${movie_type}?api_key=9d72a0c28c0f596ef447765eb5e600a2&language=en-US&page=1`
-    );
-    const data = await res.json();
-    ctx.setMoviesArray({ ...data, type: `${e.target.textContent}` });
+    if (e) {
+      ctx.setPages(1);
+      const movie_type = e.target.textContent.replace(/ /g, "_").toLowerCase();
+      ctx.setMovieType((prev) => {
+        prev = e.target.textContent;
+        return prev;
+      });
+      ctx.setUrl((prev) => {
+        prev = `https://api.themoviedb.org/3/movie/${movie_type}?api_key=9d72a0c28c0f596ef447765eb5e600a2`;
+        return prev;
+      });
+    }
   }
 
   async function movieListByGenre(e) {
     ctx.setDetailsPage([]);
-    const res = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=9d72a0c28c0f596ef447765eb5e600a2&with_genres=${e.target.id}`
-    );
-    const data = await res.json();
-    ctx.setMoviesArray({ ...data, type: `${e.target.textContent}` });
+    if (e) {
+      ctx.setPages(1);
+      ctx.setMovieType((prev) => {
+        prev = e.target.textContent;
+        return prev;
+      });
+      ctx.setUrl((prev) => {
+        prev = `https://api.themoviedb.org/3/discover/movie?api_key=9d72a0c28c0f596ef447765eb5e600a2&with_genres=${e.target.id}`;
+        return prev;
+      });
+    }
   }
+
   if (ctx.genre) {
     return (
       <section className="sidebar">
