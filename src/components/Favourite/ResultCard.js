@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const ResultCard = (props) => {
   const ctx = useContext(Context);
   const movie = props.movie;
+
   return (
     <Link
       to="/detailsPage"

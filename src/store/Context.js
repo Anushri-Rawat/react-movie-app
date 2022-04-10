@@ -17,6 +17,8 @@ export const ContextProvider = (props) => {
   const [url, setUrl] = useState(
     `https://cors-anywhere-venky.herokuapp.com/https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
   );
+  const [nowPlayingMovie, setNowPlayingMovie] = useState([]);
+
   useEffect(() => {
     setIsLoading(true);
     getMoviesData(url);
@@ -24,6 +26,7 @@ export const ContextProvider = (props) => {
 
   useEffect(() => {
     getGenresList();
+    renderCarouselData();
   }, []);
 
   const [state, dispatch] = useReducer(AppReducer, favourites);
@@ -54,6 +57,31 @@ export const ContextProvider = (props) => {
     });
     setIsLoading((prev) => !prev);
   };
+
+  async function renderCarouselData() {
+    const res = await fetch(
+      `https://cors-anywhere-venky.herokuapp.com/https://api.themoviedb.org/3/movie/now_playing?api_key=9d72a0c28c0f596ef447765eb5e600a2&language=en-US&page=1`
+    );
+    const data = await res.json();
+    setNowPlayingMovie((prev) => {
+      prev = [{ ...data, type: "Now Playing" }];
+      return prev;
+    });
+  }
+
+  async function openDetailsPage(url) {
+    setDetailsPage([]);
+    const movieDetail = await fetch(
+      `https://api.themoviedb.org/3/movie/${url}?api_key=9d72a0c28c0f596ef447765eb5e600a2&language=en-US`
+    );
+
+    const data = await movieDetail.json();
+    const castDetails = await fetch(
+      `https://api.themoviedb.org/3/movie/${url}/credits?api_key=9d72a0c28c0f596ef447765eb5e600a2&language=en-US`
+    );
+    const castDetailsData = await castDetails.json();
+    setDetailsPage((prev) => (prev = [{ ...data, ...castDetailsData }]));
+  }
 
   useEffect(() => {
     localStorage.setItem("watchList", JSON.stringify(state));
@@ -86,6 +114,8 @@ export const ContextProvider = (props) => {
         setMovieType,
         url,
         setUrl,
+        nowPlayingMovie,
+        openDetailsPage,
       }}
     >
       {props.children}

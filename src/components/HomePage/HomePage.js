@@ -30,20 +30,6 @@ const HomePage = () => {
     renderHomePageData();
   }, []);
 
-  async function openDetailsPage(e) {
-    ctx.setDetailsPage([]);
-    const movieDetail = await fetch(
-      `https://api.themoviedb.org/3/movie/${e.target.parentElement.id}?api_key=9d72a0c28c0f596ef447765eb5e600a2&language=en-US`
-    );
-
-    const data = await movieDetail.json();
-    const castDetails = await fetch(
-      `https://api.themoviedb.org/3/movie/${e.target.parentElement.id}/credits?api_key=9d72a0c28c0f596ef447765eb5e600a2&language=en-US`
-    );
-    const castDetailsData = await castDetails.json();
-    ctx.setDetailsPage((prev) => (prev = [{ ...data, ...castDetailsData }]));
-  }
-
   if (trendingMovie.length > 0) {
     return (
       <section className="Homepage">
@@ -61,7 +47,9 @@ const HomePage = () => {
                         <div
                           id={movie.id}
                           className="movies-link"
-                          onClick={openDetailsPage}
+                          onClick={(e) => {
+                            ctx.openDetailsPage(e.target.parentElement.id);
+                          }}
                         >
                           <img
                             src={`https://image.tmdb.org/t/p/original/${movie["poster_path"]}`}

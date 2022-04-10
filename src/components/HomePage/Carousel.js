@@ -10,37 +10,9 @@ const Carousel = () => {
   const ctx = useContext(Context);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [length, setLength] = useState(3);
-  const [nowPlayingMovie, setNowPlayingMovie] = useState([]);
-
-  async function renderCarouselData() {
-    const res = await fetch(
-      `https://cors-anywhere-venky.herokuapp.com/https://api.themoviedb.org/3/movie/now_playing?api_key=9d72a0c28c0f596ef447765eb5e600a2&language=en-US&page=1`
-    );
-    const data = await res.json();
-    setNowPlayingMovie((prev) => {
-      prev = [{ ...data, type: "Now Playing" }];
-      return prev;
-    });
-    setLength(nowPlayingMovie.results ? nowPlayingMovie.results.length : 20);
-  }
-
-  async function openDetailsPage(e) {
-    ctx.setDetailsPage([]);
-    console.log(e.target.parentElement.id);
-    const movieDetail = await fetch(
-      `https://api.themoviedb.org/3/movie/${e.target.id}?api_key=9d72a0c28c0f596ef447765eb5e600a2&language=en-US`
-    );
-
-    const data = await movieDetail.json();
-    const castDetails = await fetch(
-      `https://api.themoviedb.org/3/movie/${e.target.id}/credits?api_key=9d72a0c28c0f596ef447765eb5e600a2&language=en-US`
-    );
-    const castDetailsData = await castDetails.json();
-    ctx.setDetailsPage((prev) => (prev = [{ ...data, ...castDetailsData }]));
-  }
 
   useEffect(() => {
-    renderCarouselData();
+    setLength(ctx.nowPlayingMovie[0].results.length);
   }, []);
 
   const next = () => {
@@ -54,7 +26,7 @@ const Carousel = () => {
       setCurrentIndex((prevState) => prevState - 1);
     }
   };
-  if (nowPlayingMovie.length > 0) {
+  if (ctx.nowPlayingMovie.length > 0) {
     return (
       <div className="carousel-container">
         <div className="carousel-wrapper">
@@ -68,7 +40,7 @@ const Carousel = () => {
               className="carousel-content"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {nowPlayingMovie[0].results.map((movie) => {
+              {ctx.nowPlayingMovie[0].results.map((movie) => {
                 return (
                   <div
                     className="banner"
@@ -85,7 +57,9 @@ const Carousel = () => {
                         <Link
                           to="/detailsPage"
                           id={movie.id}
-                          onClick={openDetailsPage}
+                          onClick={(e) => {
+                            ctx.openDetailsPage(e.target.id);
+                          }}
                         >
                           View Details
                         </Link>
