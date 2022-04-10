@@ -2,7 +2,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  flex: 0 0 20%;
+  flex: 0 0 18%;
   background-color: #131c25;
   position: relative;
   overflow-y: scroll;
@@ -39,15 +39,16 @@
   text-transform: capitalize;
   letter-spacing: 1px;
 }
-.nav-bar li {
+.nav-bar a {
   list-style-type: none;
   text-decoration: none;
   color: #848b9e;
   padding: 0.5rem 0;
   position: relative;
   cursor: pointer;
+  display: block;
 }
-.nav-bar li:before {
+.nav-bar a:before {
   content: "";
   position: absolute;
   top: 0;
@@ -59,35 +60,45 @@
   transform: scaleY(0);
   transition: transform 0.5s;
 }
-.nav-bar li:hover:before {
+.nav-bar a:hover:before {
   transform: scaleY(1);
 }
-.nav-bar li:hover {
+.nav-bar a:hover {
   color: #0fd5ff;
 }
 @media (max-width: 1440px) {
   .sidebar-logo {
     margin-top: 2rem;
   }
+  .sidebar-logo h2 {
+    font-size: 1.5rem;
+  }
   .sidebar-browse,
   .sidebar-categories {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
   }
   .sidebar-title {
-    font-size: 1.1rem;
-    padding-bottom: 0.5rem;
+    font-size: 1rem;
+    padding-bottom: 0.3rem;
   }
   .nav-bar {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
-  .nav-bar li {
+  .nav-bar a {
     color: #848b9e;
     padding: 0.4rem 0;
   }
 }
 @media (max-width: 1080px) {
   .sidebar {
-    min-width: 200px;
+    min-width: 180px;
+  }
+  .sidebar-title {
+    margin-left: 1.5rem;
+  }
+  .nav-bar {
+    font-size: 0.7rem;
+    margin-left: 1.5rem;
   }
 }
 @media (max-width: 650px) {

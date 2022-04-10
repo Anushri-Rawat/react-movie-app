@@ -17,7 +17,6 @@ export const ContextProvider = (props) => {
   const [url, setUrl] = useState(
     `https://cors-anywhere-venky.herokuapp.com/https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
   );
-
   useEffect(() => {
     setIsLoading(true);
     getMoviesData(url);

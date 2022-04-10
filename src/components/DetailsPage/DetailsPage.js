@@ -69,7 +69,7 @@ const DetailsPage = () => {
                 {renderStars(Math.round(ctx.detailsPage[0].vote_average / 2))}
               </div>
               <div className="movie-rating-number">
-                {ctx.detailsPage[0].vote_average / 2}
+                {(ctx.detailsPage[0].vote_average / 2).toFixed(1)}
                 /5
               </div>
             </div>
@@ -102,7 +102,7 @@ const DetailsPage = () => {
               }}
             >
               <AiFillHeart style={{ fill: "#eb2f06" }} />
-              Add to Favorites
+              Add to WatchList
             </button>
           </div>
           <div className="cast-details-container">

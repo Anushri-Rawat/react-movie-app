@@ -5,14 +5,16 @@ import DetailsPage from "./components/DetailsPage/DetailsPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Favourite from "./components/Favourite/Favourite";
 import React from "react";
+import CategoryPage from "./components/CategoryPage/CategoryPage";
 
 function App() {
   return (
     <ContextProvider>
-      <SideBar />
       <Router>
+        <SideBar />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
+          <Route path="/category" element={<CategoryPage />}></Route>
           <Route path="/detailsPage" element={<DetailsPage />}></Route>
           <Route path="/favourites" element={<Favourite />}></Route>
         </Routes>

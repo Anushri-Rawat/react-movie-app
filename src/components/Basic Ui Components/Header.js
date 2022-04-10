@@ -3,7 +3,6 @@ import searchBtn from "../../Assests/search.svg";
 import "./Header.css";
 import { useContext, useState } from "react";
 import Context from "../../store/Context";
-import { AiFillHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 
@@ -46,14 +45,12 @@ const Header = () => {
         </div>
         <div className="mobile-header-right-section">
           <div className="favourites-div">
-            <Link to="/favourites">
-              <AiFillHeart style={{ fontSize: "2.5rem", color: "red" }} />
-            </Link>
+            <Link to="/favourites">My List</Link>
           </div>
           <div className="sidemenu-btn">
             <GiHamburgerMenu
               style={{
-                fontSize: "2rem",
+                fontSize: "1.5rem",
                 color: "white",
               }}
               onClick={openSideMenuHandler}
@@ -76,9 +73,7 @@ const Header = () => {
         ></img>
       </div>
       <div className="favourites-div">
-        <Link to="/favourites">
-          <AiFillHeart style={{ fontSize: "2.5rem", color: "red" }} />
-        </Link>
+        <Link to="/favourites">My List</Link>
       </div>
       <div className="app_user">
         <img src={userImg} className="user-image"></img>

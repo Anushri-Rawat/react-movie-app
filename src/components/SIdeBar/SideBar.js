@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import Context from "../../store/Context";
 import "./SideBar.css";
 import Loading from "../Basic Ui Components/Loading";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const SideBar = () => {
   const ctx = useContext(Context);
@@ -51,10 +51,18 @@ const SideBar = () => {
         <div className="sidebar-browse">
           <h2 className="sidebar-title">BROWSE</h2>
           <ul className="nav-bar">
-            <li onClick={movieListByCategories}>Top Rated</li>
-            <li onClick={movieListByCategories}>TV on the air</li>
-            <li onClick={movieListByCategories}>Popular</li>
-            <li onClick={movieListByCategories}>Upcoming</li>
+            <NavLink to="/category">
+              <li onClick={movieListByCategories}>Top Rated</li>
+            </NavLink>
+            <NavLink to="/category">
+              <li onClick={movieListByCategories}>Now playing</li>
+            </NavLink>
+            <NavLink to="/category">
+              <li onClick={movieListByCategories}>Popular</li>
+            </NavLink>
+            <NavLink to="/category">
+              <li onClick={movieListByCategories}>Upcoming</li>
+            </NavLink>
           </ul>
         </div>
         <div className="sidebar-categories">
@@ -62,9 +70,14 @@ const SideBar = () => {
           <ul className="nav-bar">
             {ctx.genre.map((type) => {
               return (
-                <li onClick={movieListByGenre} key={type.id} id={type.id}>
+                <NavLink
+                  to="/category"
+                  onClick={movieListByGenre}
+                  key={type.id}
+                  id={type.id}
+                >
                   {type.name}
-                </li>
+                </NavLink>
               );
             })}
           </ul>

@@ -3,13 +3,25 @@
   background-size: cover;
   background-repeat: no-repeat;
   box-sizing: border-box;
-  padding: 2rem 4rem;
+  padding: 2rem 3rem;
   flex: 1;
   background-color: #0d181f;
   position: relative;
   color: white;
   overflow-y: scroll;
   height: 100vh;
+}
+.detailsPage::-webkit-scrollbar {
+  width: 15px;
+}
+.detailsPage::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.detailsPage::-webkit-scrollbar-thumb {
+  background: #d6dee1;
+  background-clip: content-box;
+  border-radius: 20px;
+  border: 6px solid transparent;
 }
 .close-btn {
   width: 5rem;
@@ -131,6 +143,8 @@
 }
 .cast-detail img {
   width: 100%;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 4px;
 }
 .cast-detail figcaption {
   font-size: 1rem;
@@ -162,8 +176,8 @@
 }
 @media (max-width: 1281px) {
   .detailsPage > h1 {
-    font-size: 2.4rem;
-    margin-top: 2rem;
+    font-size: 2rem;
+    margin-top: 1.5rem;
   }
   .movie-overview {
     font-size: 1rem;
@@ -213,8 +227,22 @@
     flex-direction: column;
     gap: 0rem;
   }
+  .movie-rating-stars svg {
+    height: 1.5rem;
+    width: 2rem;
+  }
   .movie-overview {
     margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  .movie-trailer-link,
+  .favourite-btn {
+    padding: 0.8rem 2rem;
+    border-radius: 0.75rem;
+    font-size: 0.8rem;
+  }
+  .cast-actor-details {
+    height: 200px;
   }
 }
 @media (max-width: 575px) {
@@ -223,40 +251,78 @@
     height: 100vh;
   }
   .detailsPage > h1 {
-    font-size: 2.2rem;
+    font-size: 1.7rem;
     letter-spacing: 0.5px;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
   .rating-and-type {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.2rem;
+  }
+  .movie-rating-stars svg {
+    height: 1.2rem;
+    width: 1.8rem;
+  }
+  .movie-detail-type {
+    font-size: 0.7rem;
+    margin-left: 8px;
+  }
+  .dot {
+    font-size: 1rem;
+    padding-bottom: 0rem;
+    margin-bottom: 0.5rem;
   }
   .movie-overview {
     width: 100%;
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
   .movies-btn {
-    margin: 1.7rem 0;
+    margin: 1rem 0;
     flex-direction: column;
-    row-gap: 1.5rem;
+    row-gap: 1rem;
   }
   .movie-trailer-link,
   .favourite-btn {
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     justify-content: center;
+    font-size: 0.6rem;
   }
   .favourite-btn {
     margin-left: 0rem;
   }
   .cast-details-container {
-    margin: 1.5rem 0;
+    margin: 1rem 0;
+  }
+  .cast-details-container > h3 {
+    font-size: 1.1rem;
   }
   .cast-detail {
-    width: 120px;
+    width: 100px;
     height: 150px;
+  }
+  .cast-actor-details {
+    margin-top: 1rem;
+    height: 180px;
   }
   .cast-detail img {
     width: inherit;
     height: inherit;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.9) 0px 2px 4px;
+  }
+  .cast-detail figcaption {
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 1;
+  }
+  .movie-directed-by {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+  }
+  .director-name {
+    margin: 0.2rem 0;
+    font-size: 11px;
   }
   .error-window {
     padding: 0rem 2rem;

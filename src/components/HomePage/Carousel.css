@@ -1,0 +1,115 @@
+.carousel-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-wrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.carousel-content-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-content {
+  display: flex;
+  transition: all 250ms linear;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.carousel-content::-webkit-scrollbar,
+.carousel-content::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-content > * {
+  width: 100%;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+.banner {
+  height: 180px;
+  margin: 1.8rem 0 2rem;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 950px;
+  position: relative;
+}
+.banner-information {
+  position: absolute;
+  bottom: 10px;
+  left: 2.3rem;
+}
+.banner-information > h2 {
+  color: white;
+  font-size: 1.6rem;
+  text-decoration: capitalize;
+}
+.genres {
+  font-size: 12px;
+  font-weight: 100;
+  text-transform: capitalize;
+  color: rgb(219, 213, 213);
+  margin: 0.2rem 0 0.5rem;
+}
+.watch-viewDetails-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.watch-viewDetails-btn > a {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  color: #fff !important;
+  background-color: #00b5db;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+.left-arrow,
+.right-arrow {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 24px;
+  background-color: #777;
+  border: 1px solid #777;
+}
+.left-arrow {
+  left: 1rem;
+}
+
+.right-arrow {
+  right: 1rem;
+}
+@media (max-width: 650px) {
+  .banner-information {
+    bottom: 10px;
+    left: 2rem;
+  }
+  .banner-information > h2 {
+    color: white;
+    font-size: 1rem;
+    text-decoration: capitalize;
+  }
+  .genres {
+    font-size: 12px;
+    font-weight: 100;
+    text-transform: capitalize;
+    color: rgb(219, 213, 213);
+    margin: 0.2rem 0 0.2rem;
+  }
+  .watch-viewDetails-btn > button {
+    font-size: 0.5rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
