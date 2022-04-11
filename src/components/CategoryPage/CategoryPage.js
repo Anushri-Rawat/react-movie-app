@@ -2,11 +2,11 @@ import { useContext } from "react";
 import Context from "../../store/Context";
 import Header from "../Basic Ui Components/Header";
 import Loading from "../Basic Ui Components/Loading";
-import DetailsPage from "../DetailsPage/DetailsPage";
 import next from "../../Assests/next.svg";
 import classes from "./CategoryPage.module.css";
 import { Link } from "react-router-dom";
 import back from "../../Assests/prev.svg";
+import React from "react";
 
 const CategoryPage = () => {
   const ctx = useContext(Context);
@@ -31,7 +31,7 @@ const CategoryPage = () => {
                   >
                     <img
                       src={`https://image.tmdb.org/t/p/original/${movie["poster_path"]}`}
-                      alt="Movie Poster Image"
+                      alt="Movie Poster"
                     ></img>
                     <h2 className={classes["movie-name"]}>
                       {movie.title || movie.original_name}

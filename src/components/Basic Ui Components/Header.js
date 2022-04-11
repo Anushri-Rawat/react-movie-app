@@ -1,14 +1,14 @@
 import userImg from "../../Assests/user2.jpg";
 import searchBtn from "../../Assests/search.svg";
 import "./Header.css";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Context from "../../store/Context";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import React from "react";
 
 const Header = () => {
   const ctx = useContext(Context);
-  const [searchQuery, setSearchQuery] = useState("");
 
   function SearchBarHandler(e) {
     e.target.previousElementSibling.classList.toggle("opensearchbar");
@@ -16,8 +16,7 @@ const Header = () => {
 
   async function searchHandler(e) {
     e.preventDefault();
-    setSearchQuery((prev) => prev + e.target.value);
-    if (e && e.key == "Enter") {
+    if (e && e.key === "Enter") {
       ctx.setDetailsPage([]);
       ctx.setPages(1);
       ctx.setMovieType((prev) => {
@@ -76,7 +75,7 @@ const Header = () => {
         <Link to="/favourites">My List</Link>
       </div>
       <div className="app_user">
-        <img src={userImg} className="user-image"></img>
+        <img src={userImg} className="user-image" alt="john doe img"></img>
         <span className="username">John Doe</span>
       </div>
     </div>

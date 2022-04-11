@@ -4,15 +4,17 @@ import playBtn from "../../Assests/play.svg";
 import Header from "../Basic Ui Components/Header";
 import "./DetailsPage.css";
 import Loading from "../Basic Ui Components/Loading";
-import { AiFillStar, AiFillHeart, AiOutlineArrowLeft } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { AiFillStar, AiFillHeart } from "react-icons/ai";
+import React from "react";
 
 const DetailsPage = () => {
   const ctx = useContext(Context);
 
   let watchedDisabled;
   if (ctx.detailsPage.length > 0) {
-    let storedMovie = ctx.favourites.find((o) => o.id == ctx.detailsPage[0].id);
+    let storedMovie = ctx.favourites.find(
+      (o) => o.id === ctx.detailsPage[0].id
+    );
     watchedDisabled = storedMovie ? true : false;
   }
 
@@ -39,6 +41,7 @@ const DetailsPage = () => {
           <figure className="cast-detail" key={cast.cast_id}>
             <img
               src={`https://image.tmdb.org/t/p/original/${cast["profile_path"]}`}
+              alt="cast-profile"
             ></img>
             <figcaption>{cast.name}</figcaption>
           </figure>
@@ -122,7 +125,7 @@ const DetailsPage = () => {
         </div>
       </div>
     );
-  } else if (ctx.detailsPage.length == 0) {
+  } else if (ctx.detailsPage.length === 0) {
     return <Loading></Loading>;
   } else {
     return (

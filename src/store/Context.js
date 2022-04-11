@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState, useReducer } from "react";
+import React from "react";
 
 const Context = createContext();
 const API_KEY = "9d72a0c28c0f596ef447765eb5e600a2";
@@ -20,11 +21,6 @@ export const ContextProvider = (props) => {
   const [nowPlayingMovie, setNowPlayingMovie] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
-    getMoviesData(url);
-  }, [pages, url]);
-
-  useEffect(() => {
     getGenresList();
     renderCarouselData();
   }, []);
@@ -44,19 +40,22 @@ export const ContextProvider = (props) => {
       case "ADD_MOVIE_TO_FAVOURITE":
         return [action.payload, ...state];
       case "REMOVE_MOVIE_FROM_FAVOURITE":
-        return state.filter((movie) => movie.id != action.payload);
+        return state.filter((movie) => movie.id !== action.payload);
       default:
         return state;
     }
   }
-  const getMoviesData = async (url) => {
-    const res = await fetch(`${url}&language=en-US&page=${pages}`);
-    const data = await res.json();
-    setMoviesArray((prev) => {
-      return { prev, ...data, type: movieType };
-    });
-    setIsLoading((prev) => !prev);
-  };
+  const getMoviesData = React.useCallback(
+    async (url) => {
+      const res = await fetch(`${url}&language=en-US&page=${pages}`);
+      const data = await res.json();
+      setMoviesArray((prev) => {
+        return { prev, ...data, type: movieType };
+      });
+      setIsLoading((prev) => !prev);
+    },
+    [pages, movieType]
+  );
 
   async function renderCarouselData() {
     const res = await fetch(
@@ -82,6 +81,11 @@ export const ContextProvider = (props) => {
     const castDetailsData = await castDetails.json();
     setDetailsPage((prev) => (prev = [{ ...data, ...castDetailsData }]));
   }
+
+  useEffect(() => {
+    setIsLoading(true);
+    getMoviesData(url);
+  }, [url, getMoviesData]);
 
   useEffect(() => {
     localStorage.setItem("watchList", JSON.stringify(state));

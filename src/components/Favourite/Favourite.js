@@ -3,6 +3,8 @@ import Context from "../../store/Context";
 import Loading from "../Basic Ui Components/Loading";
 import ResultCard from "./ResultCard";
 import "./ResultCard.css";
+import React from "react";
+import uuid from "react-uuid";
 
 const Favourite = () => {
   const ctx = useContext(Context);
@@ -14,7 +16,7 @@ const Favourite = () => {
         {movie.length > 0 ? (
           <div className="favourite-movies">
             {movie.map((item) => {
-              return <ResultCard movie={item} key={movie.imdb_id} />;
+              return <ResultCard movie={item} key={uuid()} />;
             })}
           </div>
         ) : (

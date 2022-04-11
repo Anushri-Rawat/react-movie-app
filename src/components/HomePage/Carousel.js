@@ -5,6 +5,7 @@ import Context from "../../store/Context";
 import { Link } from "react-router-dom";
 import uuid from "react-uuid";
 import Loading from "../Basic Ui Components/Loading";
+import React from "react";
 
 const Carousel = () => {
   const ctx = useContext(Context);
@@ -13,7 +14,7 @@ const Carousel = () => {
 
   useEffect(() => {
     setLength(ctx.nowPlayingMovie[0].results.length);
-  }, []);
+  }, [ctx.nowPlayingMovie]);
 
   const next = () => {
     if (currentIndex < length - 1) {
@@ -53,7 +54,11 @@ const Carousel = () => {
                       <h2>{movie.title}</h2>
                       <div className="genres">Action,adventure,Comedy</div>
                       <div className="watch-viewDetails-btn">
-                        <a href="#">Watch</a>
+                        <a
+                          href={`https://www.youtube.com/results?search_query=${movie.title}`}
+                        >
+                          Watch
+                        </a>
                         <Link
                           to="/detailsPage"
                           id={movie.id}

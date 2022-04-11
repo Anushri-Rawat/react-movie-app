@@ -6,6 +6,7 @@ import "./HomePage.css";
 import { Link } from "react-router-dom";
 import uuid from "react-uuid";
 import Carousel from "./Carousel";
+import React from "react";
 
 const HomePage = () => {
   const ctx = useContext(Context);
@@ -53,7 +54,7 @@ const HomePage = () => {
                         >
                           <img
                             src={`https://image.tmdb.org/t/p/original/${movie["poster_path"]}`}
-                            alt="Movie Poster Image"
+                            alt="Movie Poster"
                           ></img>
                           <h2 className="movie-name">
                             {movie.title || movie.original_name}

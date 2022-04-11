@@ -3,29 +3,35 @@ import Context from "../../store/Context";
 import "./SideBar.css";
 import Loading from "../Basic Ui Components/Loading";
 import { NavLink } from "react-router-dom";
+import React from "react";
 
 const SideBar = () => {
   const ctx = useContext(Context);
 
+  const movieListByCategories = React.useCallback(
+    async (e) => {
+      ctx.setDetailsPage([]);
+      if (e) {
+        ctx.setPages(1);
+        const movie_type = e.target.textContent
+          .replace(/ /g, "_")
+          .toLowerCase();
+        ctx.setMovieType((prev) => {
+          prev = e.target.textContent;
+          return prev;
+        });
+        ctx.setUrl((prev) => {
+          prev = `https://api.themoviedb.org/3/movie/${movie_type}?api_key=9d72a0c28c0f596ef447765eb5e600a2`;
+          return prev;
+        });
+      }
+    },
+    [ctx.pages]
+  );
+
   useEffect(() => {
     movieListByCategories();
-  }, [ctx.pages]);
-
-  async function movieListByCategories(e) {
-    ctx.setDetailsPage([]);
-    if (e) {
-      ctx.setPages(1);
-      const movie_type = e.target.textContent.replace(/ /g, "_").toLowerCase();
-      ctx.setMovieType((prev) => {
-        prev = e.target.textContent;
-        return prev;
-      });
-      ctx.setUrl((prev) => {
-        prev = `https://api.themoviedb.org/3/movie/${movie_type}?api_key=9d72a0c28c0f596ef447765eb5e600a2`;
-        return prev;
-      });
-    }
-  }
+  }, [movieListByCategories]);
 
   async function movieListByGenre(e) {
     ctx.setDetailsPage([]);

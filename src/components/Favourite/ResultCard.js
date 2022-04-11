@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Context from "../../store/Context";
 import "./ResultCard.css";
 import { Link } from "react-router-dom";
+import React from "react";
 
 const ResultCard = (props) => {
   const ctx = useContext(Context);
@@ -31,14 +32,16 @@ const ResultCard = (props) => {
         <div className="movie-ratings">
           {(movie.vote_average / 2).toFixed(1)}
         </div>
-        <div
-          className="control-btn"
-          onClick={() => {
-            ctx.removeMoviesFromFavourites(movie.id);
-          }}
-        >
-          X
-        </div>
+        <Link to="/favourites">
+          <div
+            className="control-btn"
+            onClick={() => {
+              ctx.removeMoviesFromFavourites(movie.id);
+            }}
+          >
+            X
+          </div>
+        </Link>
       </div>
       <div className="info">
         <h3 className="movie-title">{movie.title}</h3>
