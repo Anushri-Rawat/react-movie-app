@@ -33,13 +33,13 @@
   flex-grow: 1;
 }
 .banner {
-  height: 250px;
+  height: 300px;
   margin: 1.8rem 0 2rem;
   border-radius: 10px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  max-width: 950px;
+  width: 100%;
   position: relative;
 }
 .banner-information {
@@ -91,6 +91,11 @@
 
 .right-arrow {
   right: 1rem;
+}
+@media (max-width: 1440px) {
+  .banner {
+    height: 250px;
+  }
 }
 @media (max-width: 650px) {
   .banner-information {

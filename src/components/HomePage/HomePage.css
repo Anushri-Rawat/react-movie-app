@@ -34,7 +34,7 @@ a {
 }
 .movies-list {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   justify-content: flex-start !important;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -131,6 +131,9 @@ a {
     margin-bottom: 0.5rem;
     margin-top: 1.5rem;
   }
+  .movies-list {
+    gap: 1.5rem;
+  }
   .movies-link {
     width: 150px;
     height: 200px;
@@ -148,8 +151,6 @@ a {
     max-width: 130px;
     height: 180px;
   }
-}
-@media (max-width: 950px) {
 }
 @media (max-width: 450px) {
   .Homepage {

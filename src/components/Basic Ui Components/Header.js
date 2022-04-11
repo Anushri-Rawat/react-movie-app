@@ -34,6 +34,20 @@ const Header = () => {
   function openSideMenuHandler() {
     const sideMenu = document.querySelector(".sidebar");
     sideMenu.classList.toggle("sideMenu");
+    document.querySelectorAll(".nav-bar li").forEach((li) => {
+      li.addEventListener("click", (e) => {
+        setTimeout(() => {
+          sideMenu.classList.remove("sideMenu");
+        }, 50);
+      });
+    });
+    document.querySelectorAll(".nav-bar a").forEach((li) => {
+      li.addEventListener("click", (e) => {
+        setTimeout(() => {
+          sideMenu.classList.remove("sideMenu");
+        }, 50);
+      });
+    });
   }
 
   return (

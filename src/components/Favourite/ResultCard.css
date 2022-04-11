@@ -29,11 +29,11 @@
 }
 .resultCard {
   display: block;
-  width: calc(20% - 2.4rem);
+  width: calc(16.67% - 2.5rem);
   text-align: center;
 }
 .poster-wrapper {
-  height: 200px;
+  height: 300px;
   position: relative;
 }
 .movie-ratings {
@@ -43,7 +43,7 @@
   padding: 0.8rem;
   position: absolute;
   top: 65%;
-  right: -15%;
+  right: -10%;
   font-weight: 600;
   font-size: 15px;
 }
@@ -86,32 +86,71 @@
   color: white;
   font-size: 1rem;
 }
-@media (max-width: 1150px) {
-  .favourite-section {
-    padding: 1.5rem 1.5rem 1.5rem 2rem;
+@media (max-width: 1750px) {
+  .resultCard {
+    width: calc(20% - 2.4rem);
+  }
+  .movie-ratings {
+    top: 65%;
+    right: -10%;
   }
 }
-@media (max-width: 950px) {
+@media (max-width: 1440px) {
+  .favourite-movies {
+    gap: 2.5rem;
+  }
+  .resultCard {
+    width: calc(20% - 2rem);
+  }
+  .movie-ratings {
+    top: 65%;
+    right: -15%;
+  }
+  .poster-wrapper {
+    height: 200px;
+  }
+}
+@media (max-width: 1150px) {
+  .favourite-section {
+    padding: 1.5rem 1rem 1.5rem 1rem;
+  }
+}
+@media (max-width: 990px) {
   .favourite-movies {
     gap: 2rem;
   }
   .resultCard {
     width: calc(25% - 1.5rem);
   }
+  .movie-ratings {
+    background: rgb(240, 84, 27);
+    padding: 0.6rem;
+    position: absolute;
+    top: 65%;
+    right: -12%;
+    font-weight: 600;
+    font-size: 12px;
+  }
 }
-@media (max-width: 750px) {
+@media (max-width: 850px) {
+  .favourite-movies {
+    gap: 1.5rem;
+  }
   .resultCard {
-    width: calc(33.3% - 1.4rem);
+    width: calc(25% - 1.12rem);
+  }
+  .poster-wrapper {
+    height: 150px;
   }
 }
-@media (max-width: 425px) {
-  .favourite-section > h1 {
-    margin-left: 5%;
-  }
+@media (max-width: 470px) {
   .favourite-movies {
     justify-content: center;
   }
   .resultCard {
-    width: calc(50% - 1rem);
+    width: calc(33.3% - 1rem);
+  }
+  .poster-wrapper {
+    height: 130px;
   }
 }

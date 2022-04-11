@@ -6,6 +6,7 @@
   background-color: #131c25;
   position: relative;
   overflow-y: scroll;
+  height: 100vh;
 }
 .sidebar::-webkit-scrollbar {
   display: none;
