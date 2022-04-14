@@ -6,6 +6,24 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+.dark-theme {
+  --bg-color: #0d181f;
+  --text-color: white;
+  --scroll-bg: #d6dee1;
+  --scroll-color: transparent;
+  --sidebar-title: #656f7f;
+  --card-title: #d9d9d9;
+  --sidebar-navlinks: #848b9e;
+}
+.light-theme {
+  --bg-color: #f7f7f7;
+  --text-color: black;
+  --scroll-color: white;
+  --scroll-bg: #566970;
+  --sidebar-title: black;
+  --card-title: black;
+  --sidebar-navlinks: #545658;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -19,5 +37,5 @@ html {
   overflow: hidden;
 }
 body {
-  background-color: #0d181f;
+  background: var(--bg-color);
 }

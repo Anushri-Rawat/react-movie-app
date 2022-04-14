@@ -3,20 +3,22 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 18%;
-  background-color: #131c25;
+  background-color: var(--bg-color);
   position: relative;
   overflow-y: scroll;
   height: 100vh;
+  border-right: 2px solid var(--text-color);
+  margin: 20px 0 0;
 }
 .sidebar::-webkit-scrollbar {
   display: none;
 }
 .sidebar-logo {
-  margin-top: 2rem;
+  margin-top: 0.2rem;
   display: flex;
   align-items: center;
   margin-left: 2rem;
-  color: white;
+  color: var(--text-color);
 }
 .sidebar-logo h2 {
   font-family: "Merienda", cursive !important;
@@ -30,7 +32,7 @@
   font-size: 1.2rem;
   text-transform: uppercase;
   margin-left: 2rem;
-  color: #656f7f;
+  color: var(--sidebar-title);
   letter-spacing: 2px;
   padding-bottom: 0.5rem;
 }
@@ -43,11 +45,12 @@
 .nav-bar a {
   list-style-type: none;
   text-decoration: none;
-  color: #848b9e;
+  color: var(--sidebar-navlinks);
   padding: 0.5rem 0;
   position: relative;
   cursor: pointer;
   display: block;
+  font-weight: 450;
 }
 .nav-bar a:before {
   content: "";
@@ -69,7 +72,7 @@
 }
 @media (max-width: 1440px) {
   .sidebar-logo {
-    margin-top: 2rem;
+    margin-top: 0.8rem;
   }
   .sidebar-logo h2 {
     font-size: 1.5rem;
@@ -86,7 +89,7 @@
     font-size: 0.8rem;
   }
   .nav-bar a {
-    color: #848b9e;
+    color: var(--sidebar-navlinks);
     padding: 0.4rem 0;
   }
 }
@@ -95,6 +98,9 @@
     min-width: 180px;
   }
   .sidebar-title {
+    margin-left: 1.5rem;
+  }
+  .sidebar-logo {
     margin-left: 1.5rem;
   }
   .nav-bar {

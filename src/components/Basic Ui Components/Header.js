@@ -1,11 +1,12 @@
 import userImg from "../../Assests/user2.jpg";
 import searchBtn from "../../Assests/search.svg";
 import "./Header.css";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Context from "../../store/Context";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import React from "react";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Header = () => {
   const ctx = useContext(Context);
@@ -57,36 +58,80 @@ const Header = () => {
           <h2>MOVEA</h2>
         </div>
         <div className="mobile-header-right-section">
+          <div
+            className="theme-block"
+            onClick={() => {
+              ctx.setTheme((prev) => !prev);
+              document
+                .querySelector("body")
+                .classList.remove(
+                  `${ctx.theme ? "dark-theme" : "light-theme"}`
+                );
+              document
+                .querySelector("body")
+                .classList.add(`${ctx.theme ? "light-theme" : "dark-theme"}`);
+            }}
+          >
+            {ctx.theme ? (
+              <i className="bi bi-sun-fill"></i>
+            ) : (
+              <i className="bi bi-moon-fill"></i>
+            )}
+          </div>
           <div className="favourites-div">
-            <Link to="/favourites">My List</Link>
+            <Link to="/favourites">
+              My List<div className="fav-btn">{ctx.favourites.length}</div>
+            </Link>
           </div>
           <div className="sidemenu-btn">
             <GiHamburgerMenu
               style={{
                 fontSize: "1.5rem",
-                color: "white",
+                color: `${ctx.theme ? "white" : "black"}`,
               }}
               onClick={openSideMenuHandler}
             />
           </div>
         </div>
       </div>
-      <div className="search-bar">
-        <input
-          type="text"
-          className="search-input-box"
-          onKeyUp={searchHandler}
-          placeholder="Search here.Press enter to search."
-        ></input>
-        <img
-          src={searchBtn}
-          alt="Search Icon"
-          className="search-btn"
-          onClick={SearchBarHandler}
-        ></img>
+      <Link to="/search">
+        <div className="search-bar">
+          <input
+            type="text"
+            className="search-input-box"
+            onKeyUp={searchHandler}
+            placeholder="Search here.Press enter to search."
+          ></input>
+          <img
+            src={searchBtn}
+            alt="Search Icon"
+            className="search-btn"
+            onClick={SearchBarHandler}
+          ></img>
+        </div>
+      </Link>
+      <div
+        className="theme-block"
+        onClick={() => {
+          ctx.setTheme((prev) => !prev);
+          document
+            .querySelector("body")
+            .classList.remove(`${ctx.theme ? "dark-theme" : "light-theme"}`);
+          document
+            .querySelector("body")
+            .classList.add(`${ctx.theme ? "light-theme" : "dark-theme"}`);
+        }}
+      >
+        {ctx.theme ? (
+          <i className="bi bi-sun-fill"></i>
+        ) : (
+          <i className="bi bi-moon-fill"></i>
+        )}
       </div>
       <div className="favourites-div">
-        <Link to="/favourites">My List</Link>
+        <Link to="/favourites">
+          My List<div className="fav-btn">{ctx.favourites.length}</div>
+        </Link>
       </div>
       <div className="app_user">
         <img src={userImg} className="user-image" alt="john doe img"></img>

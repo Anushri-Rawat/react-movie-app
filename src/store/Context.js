@@ -19,12 +19,12 @@ export const ContextProvider = (props) => {
     `https://cors-anywhere-venky.herokuapp.com/https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
   );
   const [nowPlayingMovie, setNowPlayingMovie] = useState([]);
+  const [theme, setTheme] = useState(true);
 
   useEffect(() => {
     getGenresList();
     renderCarouselData();
   }, []);
-
   const [state, dispatch] = useReducer(AppReducer, favourites);
 
   const addMoviesToFavourites = (movie) => {
@@ -120,6 +120,8 @@ export const ContextProvider = (props) => {
         setUrl,
         nowPlayingMovie,
         openDetailsPage,
+        setTheme,
+        theme,
       }}
     >
       {props.children}

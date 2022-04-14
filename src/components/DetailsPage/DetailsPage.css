@@ -5,9 +5,10 @@
   box-sizing: border-box;
   padding: 2rem 3rem;
   flex: 1;
-  background-color: #0d181f;
+  background-color: var(--bg-color);
+  /* background-color: #b8c6db; */
   position: relative;
-  color: white;
+  color: var(--text-color);
   overflow-y: scroll;
   height: 100vh;
 }
@@ -18,26 +19,26 @@
   background-color: transparent;
 }
 .detailsPage::-webkit-scrollbar-thumb {
-  background: #d6dee1;
+  background: white;
   background-clip: content-box;
   border-radius: 20px;
   border: 6px solid transparent;
 }
-.close-btn {
+/* .close-btn {
   width: 5rem;
   height: 2.5rem;
-  border: 2px solid white;
+  border: 2px solid var(--text-color);
   border-radius: 8px;
   background-color: transparent;
-  color: white;
+  color: var(--text-color);
   position: absolute;
   top: 8rem;
   right: 4.1rem;
 }
 .close-btn:hover {
-  background: white;
+  background: var(--text-color);
   color: black;
-}
+} */
 .detailsPage > h1 {
   font-size: 2.8rem;
   letter-spacing: 0.75px;
@@ -80,7 +81,7 @@
   margin: 1.5rem 0;
   font-size: 1.2rem;
   line-height: 1.5;
-  color: #fff;
+  color: var(--text-color);
   word-spacing: 4px;
 }
 .movies-btn {
@@ -171,7 +172,7 @@
   left: 2rem;
 }
 .error-msg {
-  color: white;
+  color: var(--text-color);
   margin: 8rem auto;
 }
 @media (max-width: 1281px) {
@@ -247,7 +248,7 @@
 }
 @media (max-width: 575px) {
   .detailsPage {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem;
     height: 100vh;
   }
   .detailsPage > h1 {

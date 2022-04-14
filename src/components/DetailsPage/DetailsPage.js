@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Context from "../../store/Context";
 import playBtn from "../../Assests/play.svg";
 import Header from "../Basic Ui Components/Header";
@@ -6,9 +6,15 @@ import "./DetailsPage.css";
 import Loading from "../Basic Ui Components/Loading";
 import { AiFillStar, AiFillHeart } from "react-icons/ai";
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const DetailsPage = () => {
   const ctx = useContext(Context);
+  const params = useParams();
+
+  useEffect(() => {
+    ctx.openDetailsPage(params.id);
+  }, []);
 
   let watchedDisabled;
   if (ctx.detailsPage.length > 0) {
@@ -57,7 +63,13 @@ const DetailsPage = () => {
       <div
         className="detailsPage"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.75)),url("https://image.tmdb.org/t/p/original/${ctx.detailsPage[0].poster_path}")`,
+          backgroundImage: `${
+            ctx.theme
+              ? "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.75))"
+              : "linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(50, 55, 114, 0.73))"
+          },url("https://image.tmdb.org/t/p/original/${
+            ctx.detailsPage[0].poster_path
+          }")`,
         }}
       >
         {/* <button className="close-btn" onClick={closeHandler}>

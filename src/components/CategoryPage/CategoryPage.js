@@ -21,20 +21,16 @@ const CategoryPage = () => {
           {moviesList.map((movie) => {
             return (
               <li className={classes["movies-item"]} key={movie.id}>
-                <Link to="/detailsPage">
-                  <div
-                    id={movie.id}
-                    className={classes["movies-link"]}
-                    onClick={(e) => {
-                      ctx.openDetailsPage(e.target.parentElement.id);
-                    }}
-                  >
+                <Link to={`/detailsPage/${movie.id}`}>
+                  <div id={movie.id} className={classes["movies-link"]}>
                     <img
                       src={`https://image.tmdb.org/t/p/original/${movie["poster_path"]}`}
                       alt="Movie Poster"
                     ></img>
                     <h2 className={classes["movie-name"]}>
-                      {movie.title || movie.original_name}
+                      {movie.title
+                        ? movie.title.slice(0, 40)
+                        : movie.original_name.slice(0, 40)}
                     </h2>
                     {/* <span className={classes["movie-genre">Action</span>
                   <span className={classes["release-year">
@@ -49,30 +45,38 @@ const CategoryPage = () => {
           })}
         </ul>
         <div className={classes["movie-next-btn"]}>
-          <button
-            className={classes["nextBtn"]}
-            onClick={() => {
-              ctx.setPages((prev) => prev + 1);
-            }}
-          >
-            <img
-              src={next}
-              alt="next icon"
-              className={classes["button-icon"]}
-            ></img>
-          </button>
-          <button
-            className={classes["backBtn"]}
-            onClick={() => {
-              ctx.setPages((prev) => prev - 1);
-            }}
-          >
-            <img
-              src={back}
-              alt="back icon"
-              className={classes["button-icon"]}
-            ></img>
-          </button>
+          {ctx.MoviesArray.results.length > 0 ? (
+            <button
+              className={classes["nextBtn"]}
+              onClick={() => {
+                ctx.setPages((prev) => prev + 1);
+              }}
+            >
+              <img
+                src={next}
+                alt="next icon"
+                className={classes["button-icon"]}
+              ></img>
+            </button>
+          ) : (
+            <h3 style={{ color: "white", fontWeight: "300" }}>
+              Sorry no more results...
+            </h3>
+          )}
+          {ctx.pages > 1 && (
+            <button
+              className={classes["backBtn"]}
+              onClick={() => {
+                ctx.setPages((prev) => prev - 1);
+              }}
+            >
+              <img
+                src={back}
+                alt="back icon"
+                className={classes["button-icon"]}
+              ></img>
+            </button>
+          )}
         </div>
       </section>
     );

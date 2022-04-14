@@ -21,13 +21,13 @@
   border-radius: 3rem;
   cursor: pointer;
   background: #00acd1;
-  color: #fff;
+  color: var(--text-color);
   transition: width 0.5s ease-in-out;
   margin-right: -1.5rem;
   font-size: 0.7rem;
 }
 .search-input-box::placeholder {
-  color: white;
+  color: var(--text-color);
   font-size: 0.7rem;
 }
 .search-input-box:focus {
@@ -49,20 +49,29 @@
 }
 .username {
   font-size: 0.9rem;
-  color: white;
+  color: var(--text-color);
 }
 .opensearchbar {
   width: 20rem;
   cursor: text;
 }
-.favourites-div {
+.theme-block i {
+  color: var(--text-color);
+}
+.theme-block {
   margin-left: auto;
-  margin-right: 1.1rem;
+  margin-right: 0.8rem;
+  cursor: pointer;
+}
+.favourites-div {
+  margin-right: 1.5rem;
   position: relative;
+  z-index: 20;
 }
 .favourites-div > a {
+  position: relative;
   font-size: 0.9rem;
-  color: white;
+  color: var(--text-color);
 }
 .favourites-div > a:hover {
   color: #0fd5ff;
@@ -82,16 +91,30 @@
 .favourites-div > a:hover:before {
   transform: scaleY(1);
 }
+.fav-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  padding: 3px 0;
+  text-align: center;
+  font-size: 10px;
+  background: #0fd5ff;
+  color: var(--text-color);
+  z-index: -1;
+}
 .sidemenu-btn {
   display: none;
 }
 @media (max-width: 1440px) {
   .search-input-box {
     border: none;
-    width: 1.5rem;
-    height: 1.5rem;
-    padding: 0.8rem;
-    margin-right: -1.2rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    padding: 0.9rem;
+    margin-right: -1.3rem;
   }
   .search-btn {
     width: 0.8rem;
@@ -111,8 +134,12 @@
 @media (max-width: 650px) {
   .header {
     flex-direction: column;
+    align-items: flex-start;
   }
   .app_user {
+    display: none;
+  }
+  .theme-block {
     display: none;
   }
   .mobile-header {
@@ -124,7 +151,7 @@
     display: flex !important;
     align-items: center;
     margin-bottom: 0.5rem;
-    color: white;
+    color: var(--text-color);
   }
   .homePage-logo h2 {
     font-family: "Merienda", cursive !important;
@@ -133,16 +160,17 @@
   .search-input-box {
     width: 1.2rem;
     height: 1.2rem;
-    padding: 0.7rem;
-    margin-right: -1.1rem;
+    padding: 0.9rem;
+    margin-right: -1.3rem;
   }
   .search-btn {
-    width: 0.7rem;
-    height: 0.7rem;
+    width: 0.8rem;
+    height: 0.8rem;
   }
   .mobile-header-right-section {
     display: flex;
   }
+  .mobile-header-right-section .theme-block,
   .mobile-header-right-section .favourites-div {
     display: block;
   }
@@ -154,7 +182,7 @@
   }
   .favourites-div {
     display: none;
-    margin-right: 10px;
+    margin-right: 20px;
   }
   .favourites-div > a {
     font-size: 0.8rem;

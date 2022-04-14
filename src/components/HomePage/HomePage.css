@@ -11,13 +11,13 @@ a {
   width: 15px;
 }
 .Homepage::-webkit-scrollbar-track {
-  background-color: transparent;
+  background-color: var(--scroll-color);
 }
 .Homepage::-webkit-scrollbar-thumb {
-  background: #d6dee1;
+  background: var(--scroll-bg);
   background-clip: content-box;
   border-radius: 20px;
-  border: 6px solid transparent;
+  border: 6px solid var(--scroll-color);
 }
 .homePage-logo {
   display: none;
@@ -29,7 +29,7 @@ a {
   text-transform: capitalize;
   letter-spacing: 1px;
   line-height: 1;
-  color: white;
+  color: var(--text-color);
   margin-top: 2.1rem;
 }
 .movies-list {
@@ -71,14 +71,14 @@ a {
 }
 .movie-name {
   font-size: 1rem;
-  color: #d9d9d9;
+  color: var(--card-title);
   letter-spacing: 1px;
   text-align: center;
   text-decoration: none;
 }
 .movie-genre {
   font-size: 10px;
-  color: white;
+  color: var(--text-color);
   visibility: none;
   opacity: 0;
 }

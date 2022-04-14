@@ -9,16 +9,7 @@ const ResultCard = (props) => {
   const movie = props.movie;
 
   return (
-    <Link
-      to="/detailsPage"
-      className="resultCard"
-      onClick={() =>
-        ctx.setDetailsPage((prev) => {
-          prev = [{ ...movie }];
-          return prev;
-        })
-      }
-    >
+    <Link to={`/detailsPage/${movie.id}`} className="resultCard">
       <div className="poster-wrapper">
         {movie.poster_path ? (
           <img
@@ -28,19 +19,17 @@ const ResultCard = (props) => {
         ) : (
           <div className="filler-poster"></div>
         )}
-        {/* <div className="overlay"></div> */}
         <div className="movie-ratings">
           {(movie.vote_average / 2).toFixed(1)}
         </div>
-        <Link to="/favourites">
-          <div
-            className="control-btn"
-            onClick={() => {
-              ctx.removeMoviesFromFavourites(movie.id);
-            }}
-          >
-            X
-          </div>
+        <Link
+          to="/favourites"
+          className="control-btn"
+          onClick={() => {
+            ctx.removeMoviesFromFavourites(movie.id);
+          }}
+        >
+          X
         </Link>
       </div>
       <div className="info">

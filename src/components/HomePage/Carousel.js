@@ -59,13 +59,7 @@ const Carousel = () => {
                         >
                           Watch
                         </a>
-                        <Link
-                          to="/detailsPage"
-                          id={movie.id}
-                          onClick={(e) => {
-                            ctx.openDetailsPage(e.target.id);
-                          }}
-                        >
+                        <Link to={`/detailsPage/${movie.id}`}>
                           View Details
                         </Link>
                       </div>

@@ -57,16 +57,16 @@ const SideBar = () => {
         <div className="sidebar-browse">
           <h2 className="sidebar-title">BROWSE</h2>
           <ul className="nav-bar">
-            <NavLink to="/category">
+            <NavLink to={`/category/top_rated`}>
               <li onClick={movieListByCategories}>Top Rated</li>
             </NavLink>
-            <NavLink to="/category">
+            <NavLink to={`/category/now_playing`}>
               <li onClick={movieListByCategories}>Now playing</li>
             </NavLink>
-            <NavLink to="/category">
+            <NavLink to={`/category/popular`}>
               <li onClick={movieListByCategories}>Popular</li>
             </NavLink>
-            <NavLink to="/category">
+            <NavLink to={`/category/upcoming`}>
               <li onClick={movieListByCategories}>Upcoming</li>
             </NavLink>
           </ul>
@@ -77,7 +77,7 @@ const SideBar = () => {
             {ctx.genre.map((type) => {
               return (
                 <NavLink
-                  to="/category"
+                  to={`/category/${type.name}`}
                   onClick={movieListByGenre}
                   key={type.id}
                   id={type.id}

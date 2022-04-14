@@ -44,20 +44,16 @@ const HomePage = () => {
                 {obj.results.map((movie) => {
                   return (
                     <li className="movies-item" key={movie.id}>
-                      <Link to="/detailsPage">
-                        <div
-                          id={movie.id}
-                          className="movies-link"
-                          onClick={(e) => {
-                            ctx.openDetailsPage(e.target.parentElement.id);
-                          }}
-                        >
+                      <Link to={`/detailsPage/${movie.id}`}>
+                        <div id={movie.id} className="movies-link">
                           <img
                             src={`https://image.tmdb.org/t/p/original/${movie["poster_path"]}`}
                             alt="Movie Poster"
                           ></img>
                           <h2 className="movie-name">
-                            {movie.title || movie.original_name}
+                            {movie.title
+                              ? movie.title.slice(0, 15)
+                              : movie.original_name.slice(0, 15)}
                           </h2>
                           {/* <span className="movie-genre">Action</span>
                     <span className="release-year">

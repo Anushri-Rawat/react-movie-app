@@ -2,21 +2,22 @@
   padding: 2rem 3rem;
   overflow-y: scroll;
   width: 100%;
+  overflow-x: hidden;
 }
 .favourite-section::-webkit-scrollbar {
   width: 15px;
 }
 .favourite-section::-webkit-scrollbar-track {
-  background-color: transparent;
+  background-color: var(--scroll-color);
 }
 .favourite-section::-webkit-scrollbar-thumb {
-  background: #d6dee1;
+  background: var(--scroll-bg);
   background-clip: content-box;
   border-radius: 20px;
-  border: 6px solid transparent;
+  border: 6px solid var(--scroll-color);
 }
 .favourite-section > h1 {
-  color: white;
+  color: var(--text-color);
   margin: 0 0 1.2rem;
   font-size: 1.8rem;
   font-weight: 400;
@@ -38,7 +39,7 @@
 }
 .movie-ratings {
   border-radius: 50%;
-  color: white;
+  color: var(--text-color);
   background: rgb(240, 84, 27);
   padding: 0.8rem;
   position: absolute;
@@ -58,7 +59,7 @@
 .movie-title,
 .release-date {
   font-size: 0.7rem;
-  color: #d9d9d9;
+  color: var(--card-title);
   letter-spacing: 1px;
   text-align: center;
   margin: 0.7rem 0 0.2rem;
@@ -72,18 +73,19 @@
   position: absolute;
   top: 0px;
   right: 0;
-  color: white;
-  padding: 0.5rem 0.8rem;
+  color: var(--text-color);
+  padding: 0.3rem 0.5rem;
   background: #0fd5ff;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 2px;
+  font-size: 10px;
 }
 .resultCard:hover .control-btn {
   display: block;
 }
 .no-movies {
   margin-top: 1.5rem;
-  color: white;
+  color: var(--text-color);
   font-size: 1rem;
 }
 @media (max-width: 1750px) {
