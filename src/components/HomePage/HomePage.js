@@ -42,8 +42,22 @@ const HomePage = () => {
               <h1 className="Homepage-heading">{obj.type}</h1>
               <ul className="movies-list">
                 {obj.results.map((movie) => {
+                  let storedMovie = ctx.favourites.find(
+                    (o) => o.id === movie.id
+                  );
+                  let watchedDisabled = storedMovie ? true : false;
                   return (
                     <li className="movies-item" key={movie.id}>
+                      <button
+                        className={"add_to_favourites"}
+                        disabled={watchedDisabled}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          ctx.addMoviesToFavourites(movie);
+                        }}
+                      >
+                        <i className="bi bi-plus-lg"></i>
+                      </button>
                       <Link to={`/detailsPage/${movie.id}`}>
                         <div id={movie.id} className="movies-link">
                           <img

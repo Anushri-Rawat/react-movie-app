@@ -7,6 +7,7 @@ import classes from "./CategoryPage.module.css";
 import { Link } from "react-router-dom";
 import back from "../../Assests/prev.svg";
 import React from "react";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const CategoryPage = () => {
   const ctx = useContext(Context);
@@ -19,8 +20,21 @@ const CategoryPage = () => {
         <h1 className={classes["Homepage-heading"]}>{ctx.MoviesArray.type}</h1>
         <ul className={classes["movies-list"]}>
           {moviesList.map((movie) => {
+            let storedMovie = ctx.favourites.find((o) => o.id === movie.id);
+            let watchedDisabled = storedMovie ? true : false;
+
             return (
               <li className={classes["movies-item"]} key={movie.id}>
+                <button
+                  className={classes["add_to_favourites"]}
+                  disabled={watchedDisabled}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    ctx.addMoviesToFavourites(movie);
+                  }}
+                >
+                  <i className="bi bi-plus-lg"></i>
+                </button>
                 <Link to={`/detailsPage/${movie.id}`}>
                   <div id={movie.id} className={classes["movies-link"]}>
                     <img

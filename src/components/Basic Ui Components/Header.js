@@ -1,7 +1,7 @@
 import userImg from "../../Assests/user2.jpg";
 import searchBtn from "../../Assests/search.svg";
 import "./Header.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Context from "../../store/Context";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
