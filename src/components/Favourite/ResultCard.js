@@ -3,10 +3,12 @@ import Context from "../../store/Context";
 import "./ResultCard.css";
 import { Link } from "react-router-dom";
 import React from "react";
+import { AiFillStar } from "react-icons/ai";
 
 const ResultCard = (props) => {
   const ctx = useContext(Context);
   const movie = props.movie;
+  console.log(movie);
 
   return (
     <Link to={`/detailsPage/${movie.id}`} className="resultCard">
@@ -20,7 +22,17 @@ const ResultCard = (props) => {
           <div className="filler-poster"></div>
         )}
         <div className="movie-ratings">
-          {(movie.vote_average / 2).toFixed(1)}
+          <div
+            style={{
+              display: "flex",
+              gap: "1.5px",
+              alignItems: "center",
+              fontSize: "10px",
+            }}
+          >
+            {(movie.vote_average / 2).toFixed(1)}
+            <AiFillStar />
+          </div>
         </div>
         <Link
           to="/favourites"
@@ -33,7 +45,7 @@ const ResultCard = (props) => {
         </Link>
       </div>
       <div className="info">
-        <h3 className="movie-title">{movie.title}</h3>
+        <h3 className="movie-title">{movie.title || movie.name}</h3>
         <div className="release-date">
           {movie.release_date ? movie.release_date.substring(0, 4) : "2019"}
         </div>

@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 import React from "react";
 
 const SideBar = () => {
+  console.log("page Sidebar");
+
   const ctx = useContext(Context);
 
   const movieListByCategories = React.useCallback(

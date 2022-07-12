@@ -53,10 +53,10 @@ a {
   border-radius: 5px;
   cursor: pointer;
   font-size: 22px;
-  padding: 6px 9px;
+  padding: 6px;
   position: absolute;
-  right: 0.8rem;
-  top: 0.8rem;
+  right: 0.4rem;
+  top: 0.4rem;
   color: white;
   border: none;
 }

@@ -9,6 +9,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 const DetailsPage = () => {
+  console.log("page details Page");
+
   const ctx = useContext(Context);
   const params = useParams();
 

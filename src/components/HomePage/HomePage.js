@@ -9,6 +9,7 @@ import Carousel from "./Carousel";
 import React from "react";
 
 const HomePage = () => {
+  console.log("page Homepage");
   const ctx = useContext(Context);
   const [trendingMovie, setTrendingMovie] = useState([]);
 

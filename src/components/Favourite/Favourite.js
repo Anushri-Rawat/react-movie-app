@@ -7,6 +7,7 @@ import React from "react";
 import uuid from "react-uuid";
 
 const Favourite = () => {
+  console.log("favourites Page");
   const ctx = useContext(Context);
   const movie = ctx.favourites;
   if (movie) {

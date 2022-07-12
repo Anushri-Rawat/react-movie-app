@@ -1,5 +1,5 @@
 import "./Carousel.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import Context from "../../store/Context";
 import { Link } from "react-router-dom";
@@ -10,11 +10,7 @@ import React from "react";
 const Carousel = () => {
   const ctx = useContext(Context);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [length, setLength] = useState(3);
-
-  useEffect(() => {
-    setLength(ctx.nowPlayingMovie[0].results.length);
-  }, [ctx.nowPlayingMovie]);
+  const length = ctx.nowPlayingMovie[0].results.length;
 
   const next = () => {
     if (currentIndex < length - 1) {
